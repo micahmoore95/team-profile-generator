@@ -1,7 +1,9 @@
-const inquirer = require('inquirer');
+// import inquirer from 'inquirer';
 const fs = require('fs');
 const generateHTML = require('./src/generateHTML.js');
 const Manager = require('./lib/Manager');
+const Employee = require('./lib/Employee');
+const inquirer = require('inquirer');
 
 const managerQuestions = () => {
     return inquirer.prompt ([

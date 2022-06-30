@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/micahmoore95/team-profile-generator#readme",
   "dependencies": {
-    "inquirer": "^9.0.0"
+    "inquirer": "^9.0.0",
+    "node-fetch": "^2.6.1"
   }
 }
