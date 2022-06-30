@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const generateMarkdown = require('./utils/generateMarkdown.js');
+const generateHTML = require('./src/generateHTML.js');
 const Manager = require('./lib/Manager');
 
 const managerQuestions = () => {
@@ -17,6 +17,48 @@ const managerQuestions = () => {
                 }
             }
         },
+        {
+            type: 'input',
+                name: 'managerId',
+                message: 'What is their employee ID? (Required)',
+                validate: managerIdInput => {
+                    if (managerIdInput) {
+                        return true;
+                    } else {
+                        console.log('Please enter their employee ID.');
+                    }
+                }
+            },
+            {
+                type: 'input',
+                    name: 'office',
+                    message: 'What is their office number? (Required)',
+                    validate: officeInput => {
+                        if (officeInput) {
+                            return true;
+                        } else {
+                            console.log('Please enter their office number.');
+                        }
+                    }
+                },
+                {
+                    type: 'input',
+                        name: 'managerEmail',
+                        message: 'What is their email address? (Required)',
+                        validate: managerEmailInput => {
+                            if (managerEmailInput) {
+                                return true;
+                            } else {
+                                console.log('Please enter their email address.');
+                            }
+                        }
+                    },
+                    {
+                        type: 'confirm',
+                            name: 'add',
+                            message: 'Would you like to add another employee? (Required)',
+                            default: false
+                        },
     ])
 }
 
@@ -34,7 +76,7 @@ const writeToFile = data => {
   
   async function init() {
     const feedback = await managerQuestions();
-    const markdown = generateMarkdown(feedback);
+    const markdown = generateHTML(feedback);
     writeToFile(markdown);
   };
 
